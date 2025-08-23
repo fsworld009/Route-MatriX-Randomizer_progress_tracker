@@ -1,0 +1,5 @@
+src/**/data/
+src/**/boot.lua
+RouteMatriXRandomizer/*
+!RouteMatriXRandomizer/donotdelete.txt
+dist
