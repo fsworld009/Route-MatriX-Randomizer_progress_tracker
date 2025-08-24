@@ -41,3 +41,5 @@ function progress_tracker.onSyncProgress(sessionInfo, sessionSave)
     progress_report.write(sessionInfo, sessionSave)
   end
 end
+
+progress_tracker.initialize()

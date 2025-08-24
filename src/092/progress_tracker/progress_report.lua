@@ -36,6 +36,14 @@ function progress_report.write(sessionInfo, sessionSave)
     end
   end
 
+  -- Extra data
+  if sessionInfo then
+    table.insert(progressTable, string.format("SCurrentGame=%s", sessionInfo.currentGame))
+  end
+  if sessionSave then
+    table.insert(progressTable, string.format("SIfg=%s", sessionSave.ifg))
+  end
+
   local file = io.open(progress_report_file,"w")
   table.sort(progressTable)
   for i, progress in ipairs(progressTable) do

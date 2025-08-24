@@ -1,6 +1,6 @@
 --- RouteMatriXRandomizer/092/data/multiworld/boot.lua	2025-08-16 11:15:37.000000000 +0800
-+++ src/092/boot.lua	2025-08-23 21:28:46.093404486 +0800
-@@ -2,13 +2,17 @@
++++ src/092/boot.lua	2025-08-24 16:30:41.561913836 +0800
+@@ -2,12 +2,13 @@
  	error("BizHawk emu ( + Faust Snes core ) only.")
  end
  
@@ -11,15 +11,11 @@
  require "lib_text_j"
  require "itemName"
  require "lib_input2"
++require "./progress_tracker/progress_tracker" -- by fsworld009
  
-+require "./progress_tracker/progress_tracker" -- by fsworld009 20250823
-+progress_tracker.initialize() -- by fsworld009 20250823
-+
-+
  cpu_ = cpu
  cpu = ew.cpu
- cpu2 = ew.cpu2
-@@ -52,10 +56,10 @@
+@@ -52,10 +53,10 @@
  local addrDefaultItems = {0xBFFDE0,0xBFFDE0,0xCFFDE0,}
  
  -------------------- 定数 --------------------
@@ -34,7 +30,7 @@
  
  local cMS_switchGame = 0x00
  local cMS_switchGameL = 0x01
-@@ -135,7 +139,7 @@
+@@ -135,7 +136,7 @@
  end
  
  local function getSaveStateFilename(title)
@@ -43,27 +39,22 @@
  end
  
  
-@@ -262,6 +266,7 @@
- 	--
- 	if forceUpdate or updated then
- 		lu.saveTable(filenameSave,"sessionSave")
-+		progress_tracker.onSyncProgress(sessionInfo, sessionSave) -- by fsworld009 20250823
- 		if not sessionInfo.info then
+@@ -266,6 +267,10 @@
  			quickInfo("Saved.",30)
  		end
-@@ -372,6 +377,7 @@
- 	if not sessionInfo.previousAcquiredItem then
- 		sessionInfo.previousAcquiredItem = {}
- 		for i=0,cItems-1,1 do sessionInfo.previousAcquiredItem[i] = cpu[addrItems+i] end
-+		progress_tracker.onSyncProgress(sessionInfo, sessionSave) -- by fsworld009 20250823
- 		sessionInfo.previousLastProgressFrame = cpu2[addrLastProgressFrame]
- 		sessionInfo.acquiredItemQueue = {}
- 		sessionInfo.acquiredTimer = 0
-@@ -391,6 +397,7 @@
+ 	end
++
++	if forceUpdate or updated or atBoot then
++		progress_tracker.onSyncProgress(sessionInfo, sessionSave) -- by fsworld009
++	end
+ end
+ 
+ --sessionInfo.currentGameのゲームをロードする
+@@ -391,6 +396,7 @@
  	if sessionInfo.acquiredTimer < maxFrames - minFrames and #sessionInfo.acquiredItemQueue ~= 0 then
  		sessionInfo.acquiredItem = sessionInfo.acquiredItemQueue[1]
  		table.remove( sessionInfo.acquiredItemQueue , 1 )
-+		progress_tracker.onAcquireItem(sessionInfo, sessionSave)  -- by fsworld009 20250823
++		progress_tracker.onAcquireItem(sessionInfo, sessionSave)  -- by fsworld009
  		sessionInfo.acquiredTimer = maxFrames
  	end
  	if sessionInfo.acquiredItem then
