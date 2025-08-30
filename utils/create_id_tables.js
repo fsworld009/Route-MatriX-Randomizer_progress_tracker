@@ -59,6 +59,12 @@ const fs = require('fs').promises;
           outputs.push([multiWorldNumId, `${multiWorldNumId}=${multiWorldEngId}`]);
         }
       });
+
+      if (filename === 'idItem.json') {
+        // Manually insert ID 752 which is for unlocking Vava stage in X3
+        outputs.push([572, '572=3ItKeyVavaStage']);
+      }
+
       outputs = outputs.sort((a, b) => a[0] - b[0]).map((item) => item[1]);
       await fs.writeFile(
         path.resolve(process.argv[3], outputFilename),
