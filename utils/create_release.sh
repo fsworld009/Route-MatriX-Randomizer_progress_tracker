@@ -3,6 +3,10 @@ set -e
 
 # Script to create a release
 
+# Create a public release
+# It is expected to create versions in format of v{game_version}-{date}{-optional-patch}
+# For example: v100-20250902, v100-20250902-2
+
 # Game version is optional
 
 release_version=${1:""}
@@ -28,7 +32,7 @@ rm -rf dist/$release_version
 mkdir -p dist/$release_version
 mkdir -p dist/$release_version/patches
 
-# Copy patcher and patch
+# Copy installer and patch
 cp src/$game_version/release/*.sh dist/$release_version
 cp src/$game_version/release/*.bat dist/$release_version
 cp src/$game_version/*.patch dist/$release_version/patches
