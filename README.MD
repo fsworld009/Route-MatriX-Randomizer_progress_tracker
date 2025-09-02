@@ -46,7 +46,7 @@ mod, the source code will also be split into different folders for each target v
 
 ### Dependencies
 
-* Unix environment
+* Unix environment (or Windows with wsl)
 * Nodejs (v24 up)
 * `diff` and `patch` command line tool
 
