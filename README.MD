@@ -36,7 +36,7 @@ other GUI programs to provide even better user experience.
    2. Open `RouteMatriXRandomizer.exe`, follow the instruction to create a randomized game
    3. The game will be created in a folder you specified in creator, with files like `boot.lua`,
       `boot.smc`, `lua`...etc
-3. Download the Progress Tracker zip file from [Release page](./releases) and extract it.
+3. Download the Progress Tracker zip file from [Release page](https://github.com/fsworld009/Route-MatriX-Randomizer_progress_tracker/releases) and extract it.
 4. For Windows users:
    1. Download [Patch for Windows](https://gnuwin32.sourceforge.net/packages/patch.htm) (Choose `Binaries`)
    2. Extract `patch.exe` to the folder where you extracted zip file.
