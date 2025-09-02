@@ -40,8 +40,8 @@ that file directly in this repo, we only commit diff patch files for boot.lua.
 The original project is versioned. To avoid potential compatibility issues breaking this
 mod, the source code will also be split into different folders for each target version.
 
-- `RouteMatriXRandomizer`: Original project, split by versions, for example, `RouteMatriXRandomizer/092` is the original project for Ver.092
-- `src`: Source code, split by target versions, for example, `src/092` targets Ver.092 of the original project
+- `RouteMatriXRandomizer`: Original project, split by versions, for example, `RouteMatriXRandomizer/100` is the original project for Ver.100
+- `src`: Source code, split by target versions, for example, `src/100` targets Ver.100 of the original project
 - utils: Utility scripts
 
 ### Dependencies
@@ -53,9 +53,9 @@ mod, the source code will also be split into different folders for each target v
 ### Setup
 
 1. Download the original project archive, and extract it under `RouteMatriXRandomizer/${Version}`.
-   For example, `RouteMatriXRandomizer/092` (current version)
+   For example, `RouteMatriXRandomizer/100` (current version)
 2. Run `utils/prepare_dev_env.sh`, this will generate boot.lua based on current patch
-   and necessary data into `src/$version`. For example, `src/092/boot.lua` (current version)
+   and necessary data into `src/$version`. For example, `src/100/boot.lua` (current version)
    1. **Be careful to not run this script while you have local changes not updated**.
       This script will delete current local src/${Version}/boot.lua
 

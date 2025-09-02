@@ -4,10 +4,10 @@ set -e
 # Create necessary files for local development
 
 pushd "$(dirname "$0")" > /dev/null
-version=${1:-"092"}
+version=${1:-"100"}
 
 # Create data
-node create_id_tables.js ../RouteMatriXRandomizer/$version/data ../src/$version/progress_tracker/data
+node create_id_tables.js $version
 
 # Create and patch boot.lua in modded_script
 cd ..

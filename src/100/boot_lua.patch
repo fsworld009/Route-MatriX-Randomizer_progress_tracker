@@ -1,5 +1,5 @@
---- RouteMatriXRandomizer/092/data/multiworld/boot.lua	2025-08-16 11:15:37.000000000 +0800
-+++ src/092/boot.lua	2025-08-24 16:30:41.561913836 +0800
+--- RouteMatriXRandomizer/100/data/multiworld/boot.lua	2025-08-30 09:12:17.000000000 +0800
++++ src/100/boot.lua	2025-09-02 13:59:40.763951611 +0800
 @@ -2,12 +2,13 @@
  	error("BizHawk emu ( + Faust Snes core ) only.")
  end

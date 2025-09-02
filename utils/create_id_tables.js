@@ -3,7 +3,7 @@
  * 2025/08/23 by fsworld009
  * Utility to create 'item_id_table.txt' and 'check_id_table.txt' for progress_tracker lua script
  *
- * Usage: node check_id_table.js path/to/RouteMatriXRandomizer092/data path/to/progress_tracker/data
+ * Usage: node check_id_table.js $VERSION
  * Tested in Nodejs v24.4.1
  */
 
@@ -12,8 +12,9 @@ const fs = require('fs').promises;
 
 
 (async function main(){
-  const folderInput = process.argv[2];
-  const folderPath = path.resolve(__dirname, folderInput);
+  const version = process.argv[2] || '100';
+  const folderPath = path.resolve(__dirname, `../RouteMatriXRandomizer/${version}/data`);
+  const outputFolderPath = path.resolve(__dirname, `../src/${version}/progress_tracker/data`);
 
   try {
     await fs.readdir(folderPath);
@@ -66,9 +67,11 @@ const fs = require('fs').promises;
       }
 
       outputs = outputs.sort((a, b) => a[0] - b[0]).map((item) => item[1]);
+      await fs.mkdir(outputFolderPath, { recursive: true });
       await fs.writeFile(
-        path.resolve(process.argv[3], outputFilename),
+        path.resolve(outputFolderPath, outputFilename),
         outputs.join('\n'),
+        { }
       );
       console.log('created', outputFilename);
     } catch (e) {
